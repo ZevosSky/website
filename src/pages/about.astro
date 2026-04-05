@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TagList from "../components/ui/TagList.astro";
+
+const strengths = [
+  "Real-time graphics",
+  "Technical art",
+  "Rendering pipelines",
+  "C/C++",
+  "Python",
+  "Shader workflows"
+];
+
+const focuses = [
+  {
+    title: "What I build",
+    body:
+      "I like building tools, rendering experiments, and systems that sit between engineering and art workflows. Most of my work lives somewhere between technical direction, graphics programming, and practical pipeline problem solving."
+  },
+  {
+    title: "How I work",
+    body:
+      "I care about clean iteration loops, readable systems, and projects that explain themselves well. That usually means building something useful first, then refining the presentation so the process is easy to follow."
+  },
+  {
+    title: "What I am exploring now",
+    body:
+      "Right now I am especially interested in real-time graphics, mesh workflows, and how machine learning can support geometry-heavy pipelines without making them harder for artists to use."
+  },
+  {
+    title: "Other interests",
+    body:
+      "Outside of graphics and tools work, I spend a lot of time thinking about psychology, economics, philosophy, and emotional storytelling. Those interests shape how I think about systems, motivation, meaning, and the kinds of experiences technology can help create."
+  },
+  {
+    title: "Origins",
+    body:
+      "I grew up in Hershey, Pennsylvania, and I am the son of two immigrants from China. That background gave me an early appreciation for persistence, long-term thinking, and the value of building a life through steady work and curiosity."
+  },
+  {
+    title: "What I obsess over",
+    body:
+      "I care deeply about the details that make something feel right. For me, that applies just as much to internal tools as it does to end-user experiences. I am drawn to the layer of work where usability, polish, and technical design meet, because that is often where a system becomes genuinely helpful instead of just functional."
+  }
+];
+---
+
+<BaseLayout
+  title="About"
+  description="About Gary Yang, including background, interests, and current technical focus."
+>
+  <section class="shell section">
+    <article class="about-card">
+      <h1 class="about-card__title">About me</h1>
+      <p class="about-card__lead">
+        I am a tech artist and real-time graphics engineer focused on tools,
+        rendering, and systems that help creative work move faster.
+      </p>
+      <TagList tags={strengths} />
+    </article>
+  </section>
+
+  <section class="shell about-grid">
+    {
+      focuses.map((item) => (
+        <article class="about-panel">
+          <h2>{item.title}</h2>
+          <p>{item.body}</p>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

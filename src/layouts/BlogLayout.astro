@@ -1,0 +1,68 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import TagList from "../components/ui/TagList.astro";
+import {
+  formatDate,
+  getBlogSidebarPosts,
+  getRecommendedSidebarCount
+} from "../lib/content";
+
+type Props = {
+  post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props;
+const sidebarCount = getRecommendedSidebarCount(post.body);
+const sidebarPosts = await getBlogSidebarPosts(post.slug, sidebarCount);
+---
+
+<BaseLayout title={post.data.title} description={post.data.excerpt}>
+  <article class="entry entry--blog shell">
+    <header class="entry__hero entry__hero--blog">
+      <div class="entry__heading">
+        <p class="entry__eyebrow">Blog</p>
+        <h1>{post.data.title}</h1>
+        <p class="entry__summary">{post.data.excerpt}</p>
+        <div class="entry__meta">
+          <span>{formatDate(post.data.publishedDate)}</span>
+        </div>
+        <TagList tags={post.data.tags} />
+      </div>
+      <button
+        type="button"
+        class="lightbox-trigger entry__image-trigger"
+        data-lightbox-src={post.data.coverImage}
+        data-lightbox-alt={post.data.title}
+        aria-label={`Expand image for ${post.data.title}`}
+      >
+        <img src={post.data.coverImage} alt={post.data.title} class="entry__image" />
+      </button>
+    </header>
+    <div class="entry__body-layout">
+      <div class="entry__content prose prose--blog">
+        <slot />
+      </div>
+      {
+        sidebarPosts.length > 0 && (
+          <aside class="entry__sidebar entry__sidebar--blog">
+            <p class="entry__sidebar-label">Other Writing</p>
+            <div class="entry__sidebar-grid">
+              {sidebarPosts.map((item) => (
+                <a href={`/blog/${item.slug}`} class="entry__sidebar-card entry__sidebar-card--blog">
+                  <img
+                    src={item.data.coverImage}
+                    alt={item.data.title}
+                    class="entry__sidebar-image"
+                    loading="lazy"
+                  />
+                  <span class="entry__sidebar-title">{item.data.title}</span>
+                </a>
+              ))}
+            </div>
+          </aside>
+        )
+      }
+    </div>
+  </article>
+</BaseLayout>

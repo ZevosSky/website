@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#2f375c"/>
+  <rect x="110" y="120" width="580" height="760" rx="30" fill="#f8f4ef"/>
+  <path d="M180 270h440M180 350h440M180 430h330M180 510h420M180 590h280" stroke="#2f375c" stroke-width="18" stroke-linecap="round"/>
+  <text x="110" y="95" fill="#f8f4ef" font-family="Georgia, serif" font-size="54">Field Notes</text>
+</svg>

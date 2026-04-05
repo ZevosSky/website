@@ -1,0 +1,41 @@
+---
+import { siteConfig } from "../../config/site";
+
+const pathname = Astro.url.pathname;
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Blog", href: "/blog" }
+];
+---
+
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="site-header__brand" href="/">{siteConfig.title}</a>
+    <nav aria-label="Primary navigation">
+      <ul class="site-header__nav">
+        {
+          navItems.map((item) => {
+            const isActive =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
+
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={{ active: isActive }}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

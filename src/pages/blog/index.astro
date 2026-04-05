@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionIntro from "../../components/sections/SectionIntro.astro";
+import PostCard from "../../components/ui/PostCard.astro";
+import { siteConfig } from "../../config/site";
+import { getBlogPosts } from "../../lib/content";
+
+const posts = await getBlogPosts();
+---
+
+<BaseLayout title="Blog" description={siteConfig.blog.description}>
+  <section class="shell section">
+    <SectionIntro
+      eyebrow="Blog"
+      title={siteConfig.blog.title}
+      description="Process notes, experiments, and personal writing that live separately from portfolio case studies."
+    />
+    <div class="card-grid card-grid--blog">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

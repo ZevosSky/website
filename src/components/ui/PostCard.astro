@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+import TagList from "./TagList.astro";
+import { formatDate } from "../../lib/content";
+
+type Props = {
+  post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props;
+---
+
+<article class="card card--post">
+  <a href={`/blog/${post.slug}`} class="card__image-link">
+    <img
+      src={post.data.coverImage}
+      alt={post.data.title}
+      class="card__image"
+      loading="lazy"
+    />
+  </a>
+  <div class="card__body">
+    <div class="card__meta">
+      <span>{formatDate(post.data.publishedDate)}</span>
+      <span>Blog</span>
+    </div>
+    <h3><a href={`/blog/${post.slug}`}>{post.data.title}</a></h3>
+    <p>{post.data.excerpt}</p>
+    <TagList tags={post.data.tags} />
+  </div>
+</article>

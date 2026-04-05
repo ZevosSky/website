@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#0c0d17"/>
+  <g fill="#ca6d38">
+    <circle cx="210" cy="240" r="12"/>
+    <circle cx="280" cy="300" r="8"/>
+    <circle cx="365" cy="265" r="11"/>
+    <circle cx="450" cy="335" r="7"/>
+    <circle cx="560" cy="240" r="10"/>
+    <circle cx="680" cy="310" r="12"/>
+    <circle cx="800" cy="270" r="9"/>
+    <circle cx="925" cy="340" r="10"/>
+  </g>
+  <g fill="none" stroke="#6ed0c0" stroke-width="6" opacity="0.7">
+    <path d="M180 460c130-160 260-160 390 0s260 160 390 0"/>
+    <path d="M180 540c130-160 260-160 390 0s260 160 390 0"/>
+  </g>
+  <text x="90" y="115" fill="#f4efe8" font-family="Georgia, serif" font-size="58">Particle Systems</text>
+  <text x="90" y="175" fill="#f4efe8" font-family="Segoe UI, sans-serif" font-size="34">&amp; Compute Shaders</text>
+</svg>

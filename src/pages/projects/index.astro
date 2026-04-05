@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionIntro from "../../components/sections/SectionIntro.astro";
+import ProjectCard from "../../components/ui/ProjectCard.astro";
+import { getVisibleProjects } from "../../lib/content";
+
+const projects = await getVisibleProjects();
+---
+
+<BaseLayout title="Projects" description="Portfolio projects by Gary Yang.">
+  <section class="shell section">
+    <div class="projects-intro-card">
+      <SectionIntro 
+        title="Portfolio"
+        description="All the various projects, new and old, I've worked on."
+      />
+    </div>
+    <div class="card-grid card-grid--projects">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+</BaseLayout>

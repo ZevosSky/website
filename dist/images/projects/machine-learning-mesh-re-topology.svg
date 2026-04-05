@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#152720"/>
+  <circle cx="925" cy="180" r="115" fill="#ca6d38" opacity="0.9"/>
+  <path d="M150 585 360 210l295 146 109 196-209 120Z" fill="none" stroke="#f4efe8" stroke-width="10"/>
+  <path d="M360 210 680 160 930 330 763 552" fill="none" stroke="#6ed0c0" stroke-width="8" opacity="0.7"/>
+  <text x="90" y="110" fill="#f4efe8" font-family="Georgia, serif" font-size="62">Machine Learning</text>
+  <text x="90" y="172" fill="#f4efe8" font-family="Segoe UI, sans-serif" font-size="30">Mesh Re-topology</text>
+</svg>

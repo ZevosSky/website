@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import TagList from "./TagList.astro";
+import { getProjectStatusLabel } from "../../lib/content";
+
+type Props = {
+  project: CollectionEntry<"projects">;
+};
+
+const { project } = Astro.props;
+---
+
+<article class="card card--project">
+  <a href={`/projects/${project.slug}`} class="card__image-link">
+    <span class={`status status--overlay status--${project.data.status}`}>
+      {getProjectStatusLabel(project.data.status)}
+    </span>
+    <img
+      src={project.data.coverImage}
+      alt={project.data.title}
+      class="card__image"
+      loading="lazy"
+    />
+  </a>
+  <div class="card__body">
+    <h3><a href={`/projects/${project.slug}`}>{project.data.title}</a></h3>
+    <p>{project.data.summary}</p>
+    <TagList tags={project.data.tags} />
+  </div>
+</article>

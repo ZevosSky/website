@@ -1,0 +1,26 @@
+---
+type Props = {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  actionHref?: string;
+  actionLabel?: string;
+};
+
+const { eyebrow, title, description, actionHref, actionLabel } = Astro.props;
+---
+
+<div class="section-intro">
+  <div>
+    {eyebrow && <p class="section-intro__eyebrow">{eyebrow}</p>}
+    <h2>{title}</h2>
+    {description && <p>{description}</p>}
+  </div>
+  {
+    actionHref && actionLabel && (
+      <a class="section-intro__action" href={actionHref}>
+        {actionLabel}
+      </a>
+    )
+  }
+</div>

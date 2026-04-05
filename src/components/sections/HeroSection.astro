@@ -1,0 +1,29 @@
+---
+import type { SiteConfig } from "../../config/site";
+
+type Props = {
+  hero: SiteConfig["hero"];
+  currentFocus?: SiteConfig["currentFocus"];
+};
+
+const { hero, currentFocus } = Astro.props;
+---
+
+<section class="hero">
+  <div class="shell hero__grid">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.title}</h1>
+      <p class="hero__intro">{hero.intro}</p>
+    </div>
+    {
+      currentFocus && (
+        <aside class="hero__focus">
+          <p class="hero__focus-label">Current Focus</p>
+          <h2>{currentFocus.title}</h2>
+          <p>{currentFocus.summary}</p>
+        </aside>
+      )
+    }
+  </div>
+</section>

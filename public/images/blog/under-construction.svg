@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#232742"/>
+  <rect x="100" y="120" width="600" height="760" rx="32" fill="#f7f0e8"/>
+  <path d="M170 250h460M170 340h340M170 430h420" stroke="#2f375c" stroke-width="20" stroke-linecap="round"/>
+  <rect x="170" y="560" width="460" height="130" rx="22" fill="#ca6d38"/>
+  <text x="400" y="635" text-anchor="middle" fill="#f7f0e8" font-family="Georgia, serif" font-size="40">Under Construction</text>
+  <text x="110" y="92" fill="#f7f0e8" font-family="Georgia, serif" font-size="52">Blog</text>
+</svg>

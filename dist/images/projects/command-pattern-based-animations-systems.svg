@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#16263f"/>
+  <rect x="120" y="150" width="220" height="120" rx="24" fill="#e4edf8"/>
+  <rect x="490" y="150" width="220" height="120" rx="24" fill="#e4edf8"/>
+  <rect x="860" y="150" width="220" height="120" rx="24" fill="#e4edf8"/>
+  <rect x="120" y="510" width="220" height="120" rx="24" fill="#e4edf8"/>
+  <rect x="490" y="510" width="220" height="120" rx="24" fill="#e4edf8"/>
+  <path d="M340 210h120M710 210h120M970 270v170M860 570H710M490 570H340M230 510V330" stroke="#ff9d63" stroke-width="16" fill="none"/>
+  <text x="110" y="105" fill="#f7f0e8" font-family="Georgia, serif" font-size="56">Command Pattern</text>
+  <text x="110" y="710" fill="#f7f0e8" font-family="Segoe UI, sans-serif" font-size="32">Animations and Systems</text>
+</svg>

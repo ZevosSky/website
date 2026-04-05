@@ -1,0 +1,129 @@
+---
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import { siteConfig } from "../config/site";
+import "../styles/global.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+};
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description
+} = Astro.props;
+
+const pageTitle =
+  title === siteConfig.title ? title : `${title} | ${siteConfig.title}`;
+
+const aspectMap = {
+  landscape: "16 / 10",
+  portrait: "4 / 5",
+  square: "1 / 1"
+} as const;
+
+const responsive = siteConfig.responsivePreset;
+const bodyStyle = [
+  `--projects-cols-mobile:${responsive.projectsGrid.mobile}`,
+  `--projects-cols-tablet:${responsive.projectsGrid.tablet}`,
+  `--projects-cols-desktop:${responsive.projectsGrid.desktop}`,
+  `--blog-cols-mobile:${responsive.blogGrid.mobile}`,
+  `--blog-cols-tablet:${responsive.blogGrid.tablet}`,
+  `--blog-cols-desktop:${responsive.blogGrid.desktop}`,
+  `--project-card-aspect:${aspectMap[responsive.cardAspect.projects]}`,
+  `--blog-card-aspect:${aspectMap[responsive.cardAspect.blog]}`
+].join(";");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body
+    style={bodyStyle}
+    data-hero-desktop={responsive.hero.desktop}
+    data-hero-mobile={responsive.hero.mobile}
+    data-compact-supporting-text={String(responsive.compactSupportingTextOnMobile)}
+  >
+    <div class="ambient-leaves" aria-hidden="true">
+      <span class="leaf leaf--1"></span>
+      <span class="leaf leaf--2"></span>
+      <span class="leaf leaf--3"></span>
+      <span class="leaf leaf--4"></span>
+      <span class="leaf leaf--5"></span>
+      <span class="leaf leaf--6"></span>
+      <span class="leaf leaf--7"></span>
+      <span class="leaf leaf--8"></span>
+      <span class="leaf leaf--9"></span>
+      <span class="leaf leaf--10"></span>
+      <span class="leaf leaf--11"></span>
+      <span class="leaf leaf--12"></span>
+      <span class="leaf leaf--13"></span>
+      <span class="leaf leaf--14"></span>
+      <span class="leaf leaf--15"></span>
+      <span class="leaf leaf--16"></span>
+      <span class="leaf leaf--17"></span>
+      <span class="leaf leaf--18"></span>
+      <span class="leaf leaf--19"></span>
+      <span class="leaf leaf--20"></span>
+      <span class="leaf leaf--21"></span>
+      <span class="leaf leaf--22"></span>
+      <span class="leaf leaf--23"></span>
+      <span class="leaf leaf--24"></span>
+      <span class="leaf leaf--25"></span>
+      <span class="leaf leaf--26"></span>
+      <span class="leaf leaf--27"></span>
+      <span class="leaf leaf--28"></span>
+      <span class="leaf leaf--29"></span>
+      <span class="leaf leaf--30"></span>
+    </div>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <dialog class="lightbox-dialog" aria-label="Expanded image viewer">
+      <button type="button" class="lightbox-close" aria-label="Close image viewer">
+        Close
+      </button>
+      <img class="lightbox-image" alt="" />
+    </dialog>
+    <script is:inline>
+      const dialog = document.querySelector(".lightbox-dialog");
+      const image = dialog?.querySelector(".lightbox-image");
+      const closeButton = dialog?.querySelector(".lightbox-close");
+
+      document.addEventListener("click", (event) => {
+        const trigger = event.target.closest(".lightbox-trigger");
+        if (!trigger || !dialog || !image) return;
+
+        image.src = trigger.dataset.lightboxSrc || "";
+        image.alt = trigger.dataset.lightboxAlt || "";
+        dialog.showModal();
+      });
+
+      closeButton?.addEventListener("click", () => {
+        dialog?.close();
+      });
+
+      dialog?.addEventListener("click", (event) => {
+        const rect = dialog.getBoundingClientRect();
+        const clickedInside =
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width;
+
+        if (!clickedInside) {
+          dialog.close();
+        }
+      });
+    </script>
+  </body>
+</html>
