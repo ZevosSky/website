@@ -33,6 +33,6 @@ This repo is configured to deploy to GitHub Pages using the workflow in `.github
 - The custom domain is declared in `public/CNAME`
 - Pushes to `main` trigger a new GitHub Pages deployment
 
-If you are moving off Wix, update the DNS records for `garyyang.info` to point at GitHub Pages after the first deploy succeeds.
+
 
 
