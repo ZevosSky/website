@@ -25,6 +25,16 @@ npm install
 npm run dev
 ```
 
+## Deployment
+
+This repo is configured to deploy to GitHub Pages using the workflow in `.github/workflows/deploy.yml`.
+
+- Production domain: `garyyang.info`
+- The custom domain is declared in `public/CNAME`
+- Pushes to `main` trigger a new GitHub Pages deployment
+
+If you are moving off Wix, update the DNS records for `garyyang.info` to point at GitHub Pages after the first deploy succeeds.
+
 ## Notes
 
 The starter project content mirrors the shape of the current Wix site and gives you a clean place to continue migrating long-form project writeups and media.

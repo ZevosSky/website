@@ -920,6 +920,23 @@ main {
   margin-bottom: 0.75rem;
 }
 
+.prose > :first-child {
+  margin-top: 0;
+}
+
+.prose > h1:first-child,
+.prose > h2:first-child,
+.prose > h3:first-child,
+.prose > h4:first-child,
+.prose > p:first-child,
+.prose > ul:first-child,
+.prose > ol:first-child,
+.prose > blockquote:first-child,
+.prose > figure:first-child,
+.prose > div:first-child {
+  margin-top: 0;
+}
+
 .prose a {
   color: var(--color-secondary);
 }
