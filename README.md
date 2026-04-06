@@ -1,8 +1,8 @@
-# Gary Yang Portfolio + Blog
+# Gary Yang Portfolio + Blog Reminders
 
-Static Astro site for `garyyang.info`, with a portfolio-first homepage, a separate blog section, and file-based content editing.
+Static Astro site 
 
-## Content workflow
+## Content workflow reminders
 
 - Add or edit portfolio entries in `src/content/projects/`
 - Add or edit blog posts in `src/content/blog/`
@@ -35,6 +35,4 @@ This repo is configured to deploy to GitHub Pages using the workflow in `.github
 
 If you are moving off Wix, update the DNS records for `garyyang.info` to point at GitHub Pages after the first deploy succeeds.
 
-## Notes
 
-The starter project content mirrors the shape of the current Wix site and gives you a clean place to continue migrating long-form project writeups and media.
