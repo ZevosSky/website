@@ -13,7 +13,7 @@ export const siteConfig = {
     "Procedural Enthusiast",
   hero: {
     eyebrow: "",
-    title: "Tech Artist & Real-Time Graphics Engineer",
+    title: "Real-Time Graphics Engineer, ML & Tech Art",
     intro:
       "Deep low-level experience with C/C++, Python, and shader languages. Passionate about building tools, rendering techniques, and interactive systems.",
     ctaLabel: "Browse Projects",
