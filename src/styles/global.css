@@ -1386,6 +1386,12 @@ main {
     background: transparent;
   }
 
+  .card--post .card__image {
+    aspect-ratio: var(--project-card-aspect, 16 / 10);
+    object-fit: cover;
+    background: var(--color-accent-soft);
+  }
+
   body[data-hero-mobile="split"] .hero__grid {
     flex-direction: row;
   }
