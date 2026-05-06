@@ -19,7 +19,13 @@ const sidebarCount = getRecommendedSidebarCount(project.body);
 const sidebarProjects = await getProjectSidebarProjects(project.slug, sidebarCount);
 ---
 
-<BaseLayout title={project.data.title} description={project.data.summary}>
+<BaseLayout
+  title={project.data.title}
+  description={project.data.summary}
+  image={project.data.coverImage}
+  imageAlt={project.data.title}
+  pageType="article"
+>
   <article class="entry shell">
     <header class="entry__hero">
       <div class="entry__heading">

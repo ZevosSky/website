@@ -19,7 +19,13 @@ const sidebarPosts = await getBlogSidebarPosts(post.slug, sidebarCount);
 const currentYear = new Date().getFullYear();
 ---
 
-<BaseLayout title={post.data.title} description={post.data.excerpt}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.excerpt}
+  image={post.data.coverImage}
+  imageAlt={post.data.title}
+  pageType="article"
+>
   <article class="entry entry--blog shell">
     <header class="entry__hero entry__hero--blog">
       <div class="entry__heading">
