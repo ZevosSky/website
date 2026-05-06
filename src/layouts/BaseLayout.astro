@@ -26,9 +26,16 @@ const pageTitle =
 const pageUrl = new URL(Astro.url.pathname, siteConfig.siteUrl).toString();
 const twitterCard = image === "/favicon.png" ? "summary" : "summary_large_image";
 const isRemoteImage = /^https?:\/\//i.test(image);
-const previewImageUrl = isRemoteImage ? image : new URL(image, siteConfig.siteUrl).toString();
 const previewImagePath = isRemoteImage ? new URL(image).pathname : image;
 const previewImageExtension = previewImagePath.split(".").pop()?.toLowerCase();
+const socialImagePath =
+  !isRemoteImage && previewImageExtension === "svg"
+    ? `/images/social/${previewImagePath.split("/").pop()?.replace(/\.svg$/i, ".png")}`
+    : image;
+const previewImageUrl = isRemoteImage
+  ? image
+  : new URL(socialImagePath, siteConfig.siteUrl).toString();
+const socialImageExtension = socialImagePath.split(".").pop()?.toLowerCase();
 const previewImageTypeMap: Record<string, string> = {
   gif: "image/gif",
   jpeg: "image/jpeg",
@@ -37,8 +44,8 @@ const previewImageTypeMap: Record<string, string> = {
   svg: "image/svg+xml",
   webp: "image/webp"
 };
-const previewImageType = previewImageExtension
-  ? previewImageTypeMap[previewImageExtension]
+const previewImageType = socialImageExtension
+  ? previewImageTypeMap[socialImageExtension]
   : undefined;
 const securePreviewImageUrl = previewImageUrl.startsWith("https://")
   ? previewImageUrl
