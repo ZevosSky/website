@@ -806,7 +806,9 @@ main {
   padding: clamp(1.15rem, 2.4vw, 1.6rem);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
-  background: rgba(255, 250, 244, 0.92);
+  background:
+    linear-gradient(180deg, rgba(202, 109, 56, 0.08), rgba(255, 250, 244, 0.94) 34%),
+    rgba(255, 250, 244, 0.92);
   box-shadow: var(--shadow-card);
 }
 
@@ -830,6 +832,16 @@ main {
 .entry__comments-placeholder {
   margin-bottom: 0;
   color: rgba(17, 32, 25, 0.72);
+}
+
+.entry__comments .giscus,
+.entry__comments .giscus-frame {
+  width: 100%;
+}
+
+.entry__comments .giscus-frame {
+  border: 0;
+  color-scheme: light;
 }
 
 .entry__hero .entry__summary,
