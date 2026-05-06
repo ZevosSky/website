@@ -24,8 +24,25 @@ const {
 const pageTitle =
   title === siteConfig.title ? title : `${title} | ${siteConfig.title}`;
 const pageUrl = new URL(Astro.url.pathname, siteConfig.siteUrl).toString();
-const previewImageUrl = new URL(image, siteConfig.siteUrl).toString();
 const twitterCard = image === "/favicon.png" ? "summary" : "summary_large_image";
+const isRemoteImage = /^https?:\/\//i.test(image);
+const previewImageUrl = isRemoteImage ? image : new URL(image, siteConfig.siteUrl).toString();
+const previewImagePath = isRemoteImage ? new URL(image).pathname : image;
+const previewImageExtension = previewImagePath.split(".").pop()?.toLowerCase();
+const previewImageTypeMap: Record<string, string> = {
+  gif: "image/gif",
+  jpeg: "image/jpeg",
+  jpg: "image/jpeg",
+  png: "image/png",
+  svg: "image/svg+xml",
+  webp: "image/webp"
+};
+const previewImageType = previewImageExtension
+  ? previewImageTypeMap[previewImageExtension]
+  : undefined;
+const securePreviewImageUrl = previewImageUrl.startsWith("https://")
+  ? previewImageUrl
+  : undefined;
 
 const aspectMap = {
   landscape: "16 / 10",
@@ -61,6 +78,8 @@ const bodyStyle = [
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={previewImageUrl} />
+    {securePreviewImageUrl && <meta property="og:image:secure_url" content={securePreviewImageUrl} />}
+    {previewImageType && <meta property="og:image:type" content={previewImageType} />}
     <meta property="og:image:alt" content={imageAlt} />
     <meta name="twitter:card" content={twitterCard} />
     <meta name="twitter:title" content={pageTitle} />
