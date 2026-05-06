@@ -1,0 +1,39 @@
+---
+import { siteConfig } from "../../config/site";
+
+const { giscus } = siteConfig.comments;
+const isConfigured = Boolean(giscus.categoryId);
+---
+
+<section class="entry__comments" aria-labelledby="comments-heading">
+  <div class="entry__comments-heading">
+    <p class="entry__comments-label">Discussion</p>
+    <h2 id="comments-heading">Comments</h2>
+  </div>
+  {
+    isConfigured ? (
+      <script
+        is:inline
+        src="https://giscus.app/client.js"
+        data-repo={giscus.repo}
+        data-repo-id={giscus.repoId}
+        data-category={giscus.category}
+        data-category-id={giscus.categoryId}
+        data-mapping={giscus.mapping}
+        data-strict="0"
+        data-reactions-enabled={giscus.reactionsEnabled}
+        data-emit-metadata={giscus.emitMetadata}
+        data-input-position="bottom"
+        data-theme={giscus.theme}
+        data-lang="en"
+        data-loading={giscus.loading}
+        crossorigin="anonymous"
+        async
+      />
+    ) : (
+      <p class="entry__comments-placeholder">
+        Comments will appear here after GitHub Discussions and the Giscus category ID are configured.
+      </p>
+    )
+  }
+</section>

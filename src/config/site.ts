@@ -46,6 +46,19 @@ export const siteConfig = {
     description:
       "A separate writing space for process notes, experiments, and thoughts that do not need to live inside project pages."
   },
+  comments: {
+    giscus: {
+      repo: "ZevosSky/website",
+      repoId: "R_kgDOR6IlHQ",
+      category: "General",
+      categoryId: "DIC_kwDOR6IlHc4C8bsa",
+      mapping: "pathname",
+      reactionsEnabled: "1",
+      emitMetadata: "0",
+      theme: "light",
+      loading: "lazy"
+    }
+  },
   responsivePreset
 } as const;
 

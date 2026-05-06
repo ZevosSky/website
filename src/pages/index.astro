@@ -30,14 +30,16 @@ const posts = (await getBlogPosts()).slice(0, 2);
     </div>
   </section>
 
-  <section class="shell section section--blog-strip">
-    <SectionIntro
-      eyebrow="Separate Blog"
-      title={siteConfig.blog.title}
-      description={siteConfig.blog.description}
-      actionHref="/blog"
-      actionLabel="Open the blog"
-    />
+  <section class="shell section">
+    <div class="projects-intro-card">
+      <SectionIntro
+        eyebrow="Blog"
+        title={siteConfig.blog.title}
+        description={siteConfig.blog.description}
+        actionHref="/blog"
+        actionLabel="Open the blog"
+      />
+    </div>
     <div class="card-grid card-grid--blog">
       {posts.map((post) => <PostCard post={post} />)}
     </div>

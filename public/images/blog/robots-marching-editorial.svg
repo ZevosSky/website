@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="115 70 1170 842" role="img" aria-labelledby="title desc">
+  <title id="title">Robots marching toward a vanishing point</title>
+  <desc id="desc">A clean editorial vector illustration of dimensional robots marching in ordered ranks toward a central vanishing point.</desc>
+  <defs>
+    <linearGradient id="botFace" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff8ea"/>
+      <stop offset="1" stop-color="#e8ddcb"/>
+    </linearGradient>
+
+    <linearGradient id="floorWash" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6f0e4"/>
+      <stop offset="1" stop-color="#e5dccd"/>
+    </linearGradient>
+
+    <symbol id="bot-left" viewBox="-72 -122 144 244">
+      <ellipse cx="0" cy="109" rx="58" ry="13" fill="#111111" opacity=".2"/>
+
+      <path d="M-29 -95 L29 -95 L45 -80 L-13 -80 Z" fill="#ffffff" stroke="#111111" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="-42" y="-80" width="84" height="58" rx="3" fill="url(#botFace)" stroke="#111111" stroke-width="7"/>
+      <path d="M42 -80 L56 -66 L56 -10 L42 -22 Z" fill="#cfc4b4" stroke="#111111" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="-25" y="-62" width="48" height="18" fill="#111111"/>
+      <circle cx="-12" cy="-53" r="4.5" fill="#fff8ea"/>
+      <circle cx="11" cy="-53" r="4.5" fill="#fff8ea"/>
+      <rect x="-16" y="-34" width="31" height="4" fill="#111111"/>
+      <line x1="0" y1="-95" x2="0" y2="-113" stroke="#111111" stroke-width="6" stroke-linecap="square"/>
+      <circle cx="0" cy="-116" r="6" fill="#e3120b" stroke="#111111" stroke-width="5"/>
+
+      <rect x="-36" y="-19" width="73" height="76" rx="4" fill="url(#botFace)" stroke="#111111" stroke-width="7"/>
+      <path d="M37 -19 L53 -5 L53 71 L37 57 Z" fill="#cfc4b4" stroke="#111111" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="-20" y="-1" width="39" height="22" fill="#e3120b" stroke="#111111" stroke-width="5"/>
+      <circle cx="-15" cy="42" r="4" fill="#111111"/>
+      <circle cx="0" cy="42" r="4" fill="#111111"/>
+      <circle cx="15" cy="42" r="4" fill="#111111"/>
+
+      <g stroke="#111111" stroke-width="5" stroke-linejoin="round">
+        <path d="M-37 -9 L-52 4 L-42 17 L-28 5 Z" fill="#e8ddcb"/>
+        <path d="M-42 17 L-60 33 L-50 45 L-32 29 Z" fill="#e8ddcb"/>
+        <circle cx="-42" cy="17" r="7" fill="#e3120b"/>
+        <path d="M38 -9 L52 5 L43 18 L29 5 Z" fill="#e8ddcb"/>
+        <path d="M43 18 L57 36 L46 46 L32 28 Z" fill="#e8ddcb"/>
+        <circle cx="43" cy="18" r="7" fill="#e3120b"/>
+        <rect x="-64" y="36" width="21" height="19" fill="#e3120b"/>
+        <rect x="42" y="38" width="21" height="19" fill="#e3120b"/>
+      </g>
+
+      <path d="M-18 55 L-50 95" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="square"/>
+      <path d="M18 55 L39 91" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="square"/>
+      <rect x="-64" y="93" width="43" height="15" fill="#111111"/>
+      <rect x="17" y="88" width="43" height="15" fill="#111111"/>
+    </symbol>
+
+    <symbol id="bot-right" viewBox="-72 -122 144 244">
+      <ellipse cx="0" cy="109" rx="58" ry="13" fill="#111111" opacity=".2"/>
+
+      <path d="M-29 -95 L29 -95 L45 -80 L-13 -80 Z" fill="#ffffff" stroke="#111111" stroke-width="6" stroke-linejoin="round"/>
+      <rect x="-42" y="-80" width="84" height="58" rx="3" fill="url(#botFace)" stroke="#111111" stroke-width="7"/>
+      <path d="M42 -80 L56 -66 L56 -10 L42 -22 Z" fill="#cfc4b4" stroke="#111111" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="-25" y="-62" width="48" height="18" fill="#111111"/>
+      <circle cx="-12" cy="-53" r="4.5" fill="#fff8ea"/>
+      <circle cx="11" cy="-53" r="4.5" fill="#fff8ea"/>
+      <rect x="-16" y="-34" width="31" height="4" fill="#111111"/>
+      <line x1="0" y1="-95" x2="0" y2="-113" stroke="#111111" stroke-width="6" stroke-linecap="square"/>
+      <circle cx="0" cy="-116" r="6" fill="#e3120b" stroke="#111111" stroke-width="5"/>
+
+      <rect x="-36" y="-19" width="73" height="76" rx="4" fill="url(#botFace)" stroke="#111111" stroke-width="7"/>
+      <path d="M37 -19 L53 -5 L53 71 L37 57 Z" fill="#cfc4b4" stroke="#111111" stroke-width="7" stroke-linejoin="round"/>
+      <rect x="-20" y="-1" width="39" height="22" fill="#e3120b" stroke="#111111" stroke-width="5"/>
+      <circle cx="-15" cy="42" r="4" fill="#111111"/>
+      <circle cx="0" cy="42" r="4" fill="#111111"/>
+      <circle cx="15" cy="42" r="4" fill="#111111"/>
+
+      <g stroke="#111111" stroke-width="5" stroke-linejoin="round">
+        <path d="M-37 -9 L-52 5 L-43 18 L-29 5 Z" fill="#e8ddcb"/>
+        <path d="M-43 18 L-57 36 L-46 46 L-32 28 Z" fill="#e8ddcb"/>
+        <circle cx="-43" cy="18" r="7" fill="#e3120b"/>
+        <path d="M38 -9 L52 4 L42 17 L28 5 Z" fill="#e8ddcb"/>
+        <path d="M42 17 L60 33 L50 45 L32 29 Z" fill="#e8ddcb"/>
+        <circle cx="42" cy="17" r="7" fill="#e3120b"/>
+        <rect x="-63" y="38" width="21" height="19" fill="#e3120b"/>
+        <rect x="43" y="36" width="21" height="19" fill="#e3120b"/>
+      </g>
+
+      <path d="M-18 55 L-39 91" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="square"/>
+      <path d="M18 55 L50 95" fill="none" stroke="#111111" stroke-width="11" stroke-linecap="square"/>
+      <rect x="-60" y="88" width="43" height="15" fill="#111111"/>
+      <rect x="21" y="93" width="43" height="15" fill="#111111"/>
+    </symbol>
+  </defs>
+
+  <rect width="1400" height="900" fill="#f6f0e4"/>
+  <rect x="0" y="612" width="1400" height="288" fill="url(#floorWash)"/>
+  <path d="M178 824 H1222" stroke="#111111" stroke-width="5" opacity=".16"/>
+  <path d="M178 840 H1222" stroke="#e3120b" stroke-width="9" opacity=".9"/>
+
+  <g opacity=".32">
+    <use href="#bot-left" x="532" y="96" width="58" height="98"/>
+    <use href="#bot-right" x="626" y="96" width="58" height="98"/>
+    <use href="#bot-left" x="720" y="96" width="58" height="98"/>
+    <use href="#bot-right" x="814" y="96" width="58" height="98"/>
+  </g>
+
+  <g opacity=".45">
+    <use href="#bot-right" x="463" y="166" width="82" height="139"/>
+    <use href="#bot-left" x="591" y="166" width="82" height="139"/>
+    <use href="#bot-right" x="719" y="166" width="82" height="139"/>
+    <use href="#bot-left" x="847" y="166" width="82" height="139"/>
+  </g>
+
+  <g opacity=".62">
+    <use href="#bot-left" x="374" y="270" width="118" height="200"/>
+    <use href="#bot-right" x="552" y="270" width="118" height="200"/>
+    <use href="#bot-left" x="730" y="270" width="118" height="200"/>
+    <use href="#bot-right" x="908" y="270" width="118" height="200"/>
+  </g>
+
+  <g opacity=".82">
+    <use href="#bot-right" x="280" y="402" width="158" height="268"/>
+    <use href="#bot-left" x="508" y="402" width="158" height="268"/>
+    <use href="#bot-right" x="736" y="402" width="158" height="268"/>
+    <use href="#bot-left" x="964" y="402" width="158" height="268"/>
+  </g>
+
+  <g>
+    <use href="#bot-left" x="172" y="556" width="210" height="356"/>
+    <use href="#bot-right" x="454" y="556" width="210" height="356"/>
+    <use href="#bot-left" x="736" y="556" width="210" height="356"/>
+    <use href="#bot-right" x="1018" y="556" width="210" height="356"/>
+  </g>
+</svg>

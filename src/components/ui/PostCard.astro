@@ -12,6 +12,9 @@ const { post } = Astro.props;
 
 <article class="card card--post">
   <a href={`/blog/${post.slug}`} class="card__image-link">
+    <span class="status status--overlay">
+      {formatDate(post.data.publishedDate)}
+    </span>
     <img
       src={post.data.coverImage}
       alt={post.data.title}
@@ -20,10 +23,6 @@ const { post } = Astro.props;
     />
   </a>
   <div class="card__body">
-    <div class="card__meta">
-      <span>{formatDate(post.data.publishedDate)}</span>
-      <span>Blog</span>
-    </div>
     <h3><a href={`/blog/${post.slug}`}>{post.data.title}</a></h3>
     <p>{post.data.excerpt}</p>
     <TagList tags={post.data.tags} />

@@ -10,11 +10,13 @@ const posts = await getBlogPosts();
 
 <BaseLayout title="Blog" description={siteConfig.blog.description}>
   <section class="shell section">
-    <SectionIntro
-      eyebrow="Blog"
-      title={siteConfig.blog.title}
-      description="Process notes, experiments, and personal writing that live separately from portfolio case studies."
-    />
+    <div class="projects-intro-card">
+      <SectionIntro
+        eyebrow="Blog"
+        title={siteConfig.blog.title}
+        description="Process notes, experiments, and personal writing that live separately from portfolio case studies."
+      />
+    </div>
     <div class="card-grid card-grid--blog">
       {posts.map((post) => <PostCard post={post} />)}
     </div>

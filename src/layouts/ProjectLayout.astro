@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
+import Comments from "../components/content/Comments.astro";
 import TagList from "../components/ui/TagList.astro";
 import {
   formatDate,
@@ -49,8 +50,11 @@ const sidebarProjects = await getProjectSidebarProjects(project.slug, sidebarCou
       </button>
     </header>
     <div class="entry__body-layout">
-      <div class="entry__content prose">
-        <slot />
+      <div class="entry__main">
+        <div class="entry__content prose">
+          <slot />
+        </div>
+        <Comments />
       </div>
       {
         sidebarProjects.length > 0 && (
@@ -65,7 +69,10 @@ const sidebarProjects = await getProjectSidebarProjects(project.slug, sidebarCou
                     class="entry__sidebar-image"
                     loading="lazy"
                   />
-                  <span class="entry__sidebar-title">{item.data.title}</span>
+                  <span class="entry__sidebar-copy">
+                    <span class="entry__sidebar-title">{item.data.title}</span>
+                    <span class="entry__sidebar-summary">{item.data.summary}</span>
+                  </span>
                 </a>
               ))}
             </div>

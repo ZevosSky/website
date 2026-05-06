@@ -36,11 +36,11 @@ export const responsivePreset: ResponsivePreset = {
   blogGrid: {
     mobile: 1,
     tablet: 2,
-    desktop: 2
+    desktop: 3
   },
   cardAspect: {
     projects: "landscape",
-    blog: "portrait"
+    blog: "landscape"
   },
   compactSupportingTextOnMobile: true
 };

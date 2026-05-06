@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
+import Comments from "../components/content/Comments.astro";
 import TagList from "../components/ui/TagList.astro";
 import {
   formatDate,
@@ -15,6 +16,7 @@ type Props = {
 const { post } = Astro.props;
 const sidebarCount = getRecommendedSidebarCount(post.body);
 const sidebarPosts = await getBlogSidebarPosts(post.slug, sidebarCount);
+const currentYear = new Date().getFullYear();
 ---
 
 <BaseLayout title={post.data.title} description={post.data.excerpt}>
@@ -40,8 +42,16 @@ const sidebarPosts = await getBlogSidebarPosts(post.slug, sidebarCount);
       </button>
     </header>
     <div class="entry__body-layout">
-      <div class="entry__content prose prose--blog">
-        <slot />
+      <div class="entry__main">
+        <div class="entry__content prose prose--blog">
+          <slot />
+          <footer class="entry__legal">
+            &copy; {currentYear} Gary Yang. All rights reserved. This article is provided for
+            general informational purposes. Please contact me before reproducing or republishing
+            substantial portions of this work.
+          </footer>
+        </div>
+        <Comments />
       </div>
       {
         sidebarPosts.length > 0 && (
@@ -56,7 +66,10 @@ const sidebarPosts = await getBlogSidebarPosts(post.slug, sidebarCount);
                     class="entry__sidebar-image"
                     loading="lazy"
                   />
-                  <span class="entry__sidebar-title">{item.data.title}</span>
+                  <span class="entry__sidebar-copy">
+                    <span class="entry__sidebar-title">{item.data.title}</span>
+                    <span class="entry__sidebar-summary">{item.data.excerpt}</span>
+                  </span>
                 </a>
               ))}
             </div>
