@@ -5,31 +5,27 @@ const { giscus } = siteConfig.comments;
 const isConfigured = Boolean(giscus.categoryId);
 ---
 
-<section class="entry__comments" aria-labelledby="comments-heading">
+<section
+  class="entry__comments"
+  aria-labelledby="comments-heading"
+  data-giscus-comments
+  data-repo={giscus.repo}
+  data-repo-id={giscus.repoId}
+  data-category={giscus.category}
+  data-category-id={giscus.categoryId}
+  data-mapping={giscus.mapping}
+  data-reactions-enabled={giscus.reactionsEnabled}
+  data-emit-metadata={giscus.emitMetadata}
+  data-theme={giscus.theme}
+  data-loading={giscus.loading}
+>
   <div class="entry__comments-heading">
     <p class="entry__comments-label">Discussion</p>
     <h2 id="comments-heading">Comments</h2>
   </div>
   {
     isConfigured ? (
-      <script
-        is:inline
-        src="https://giscus.app/client.js"
-        data-repo={giscus.repo}
-        data-repo-id={giscus.repoId}
-        data-category={giscus.category}
-        data-category-id={giscus.categoryId}
-        data-mapping={giscus.mapping}
-        data-strict="0"
-        data-reactions-enabled={giscus.reactionsEnabled}
-        data-emit-metadata={giscus.emitMetadata}
-        data-input-position="bottom"
-        data-theme={giscus.theme}
-        data-lang="en"
-        data-loading={giscus.loading}
-        crossorigin="anonymous"
-        async
-      />
+      <div class="giscus" />
     ) : (
       <p class="entry__comments-placeholder">
         Comments will appear here after GitHub Discussions and the Giscus category ID are configured.
@@ -37,3 +33,41 @@ const isConfigured = Boolean(giscus.categoryId);
     )
   }
 </section>
+
+{
+  isConfigured && (
+    <script is:inline data-astro-rerun>
+      {`
+        (() => {
+          const comments = document.querySelector("[data-giscus-comments]");
+          const mount = comments?.querySelector(".giscus");
+
+          if (!comments || !mount) return;
+
+          mount.innerHTML = "";
+          comments.querySelector("[data-giscus-loader]")?.remove();
+
+          const script = document.createElement("script");
+          script.src = "https://giscus.app/client.js";
+          script.dataset.repo = comments.dataset.repo || "";
+          script.dataset.repoId = comments.dataset.repoId || "";
+          script.dataset.category = comments.dataset.category || "";
+          script.dataset.categoryId = comments.dataset.categoryId || "";
+          script.dataset.mapping = comments.dataset.mapping || "pathname";
+          script.dataset.strict = "0";
+          script.dataset.reactionsEnabled = comments.dataset.reactionsEnabled || "1";
+          script.dataset.emitMetadata = comments.dataset.emitMetadata || "0";
+          script.dataset.inputPosition = "bottom";
+          script.dataset.theme = comments.dataset.theme || "light";
+          script.dataset.lang = "en";
+          script.dataset.loading = comments.dataset.loading || "lazy";
+          script.crossOrigin = "anonymous";
+          script.async = true;
+          script.setAttribute("data-giscus-loader", "");
+
+          comments.append(script);
+        })();
+      `}
+    </script>
+  )
+}
