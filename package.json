@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "social-images": "node scripts/generate-social-images.mjs",
+    "prebuild": "node scripts/generate-social-images.mjs",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
@@ -15,6 +17,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
+    "sharp": "^0.34.5",
     "typescript": "^5.8.0"
   }
 }
