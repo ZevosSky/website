@@ -37,37 +37,35 @@ const isConfigured = Boolean(giscus.categoryId);
 {
   isConfigured && (
     <script is:inline data-astro-rerun>
-      {`
-        (() => {
-          const comments = document.querySelector("[data-giscus-comments]");
-          const mount = comments?.querySelector(".giscus");
+      (() => {
+        const comments = document.querySelector("[data-giscus-comments]");
+        const mount = comments?.querySelector(".giscus");
 
-          if (!comments || !mount) return;
+        if (!comments || !mount) return;
 
-          mount.innerHTML = "";
-          comments.querySelector("[data-giscus-loader]")?.remove();
+        mount.innerHTML = "";
+        comments.querySelector("[data-giscus-loader]")?.remove();
 
-          const script = document.createElement("script");
-          script.src = "https://giscus.app/client.js";
-          script.dataset.repo = comments.dataset.repo || "";
-          script.dataset.repoId = comments.dataset.repoId || "";
-          script.dataset.category = comments.dataset.category || "";
-          script.dataset.categoryId = comments.dataset.categoryId || "";
-          script.dataset.mapping = comments.dataset.mapping || "pathname";
-          script.dataset.strict = "0";
-          script.dataset.reactionsEnabled = comments.dataset.reactionsEnabled || "1";
-          script.dataset.emitMetadata = comments.dataset.emitMetadata || "0";
-          script.dataset.inputPosition = "bottom";
-          script.dataset.theme = comments.dataset.theme || "light";
-          script.dataset.lang = "en";
-          script.dataset.loading = comments.dataset.loading || "lazy";
-          script.crossOrigin = "anonymous";
-          script.async = true;
-          script.setAttribute("data-giscus-loader", "");
+        const script = document.createElement("script");
+        script.src = "https://giscus.app/client.js";
+        script.dataset.repo = comments.dataset.repo || "";
+        script.dataset.repoId = comments.dataset.repoId || "";
+        script.dataset.category = comments.dataset.category || "";
+        script.dataset.categoryId = comments.dataset.categoryId || "";
+        script.dataset.mapping = comments.dataset.mapping || "pathname";
+        script.dataset.strict = "0";
+        script.dataset.reactionsEnabled = comments.dataset.reactionsEnabled || "1";
+        script.dataset.emitMetadata = comments.dataset.emitMetadata || "0";
+        script.dataset.inputPosition = "bottom";
+        script.dataset.theme = comments.dataset.theme || "light";
+        script.dataset.lang = "en";
+        script.dataset.loading = comments.dataset.loading || "lazy";
+        script.crossOrigin = "anonymous";
+        script.async = true;
+        script.setAttribute("data-giscus-loader", "");
 
-          comments.append(script);
-        })();
-      `}
+        comments.append(script);
+      })();
     </script>
   )
 }
