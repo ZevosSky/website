@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Old-fashioned parking meter</title>
+  <desc id="desc">A clean stylized old-fashioned parking meter with a blank center plate for later logo placement.</desc>
+
+  <defs>
+    <style>
+      .red { fill: #d71920; }
+      .ink { fill: #111; }
+      .metal { fill: #718087; }
+      .metal-dark { fill: #35464d; }
+      .metal-light { fill: #93a2a8; }
+      .face { fill: #f8f0e5; }
+      .glass { fill: #cbd8d2; }
+      .line { fill: none; stroke: #111; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+      .thin { fill: none; stroke: #111; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .tick { fill: none; stroke: #111; stroke-width: 4; stroke-linecap: round; }
+      .dial-label { font: 700 18px Arial, Helvetica, sans-serif; fill: #111; letter-spacing: .3px; }
+      .dial-max { font-size: 14px; letter-spacing: 0; }
+    </style>
+  </defs>
+  <!-- Pole and mounting collar. -->
+  <rect class="metal-dark" x="558" y="610" width="84" height="138"/>
+  <path class="line" d="M558 610h84"/>
+  <rect class="metal-light" x="525" y="576" width="150" height="58" rx="22"/>
+  <path class="line" d="M547 576h106c12 0 22 10 22 22v14c0 12-10 22-22 22H547c-12 0-22-10-22-22v-14c0-12 10-22 22-22z"/>
+
+  <!-- Meter body: capsule lower half with a high arched crown. -->
+  <path class="metal" d="M375 300C375 146 475 72 600 72s225 74 225 228v230c0 124-101 225-225 225S375 654 375 530z"/>
+  <path class="line" d="M375 530V300C375 146 475 72 600 72s225 74 225 228v230c0 124-101 225-225 225S375 654 375 530z"/>
+
+  <!-- Inner raised arch around the timer window. -->
+  <path class="metal-light" d="M438 298C458 184 516 122 600 122s142 62 162 176v28H438z"/>
+  <path class="thin" d="M438 326v-28C458 184 516 122 600 122s142 62 162 176v28"/>
+
+  <!-- Arched glass timer window. -->
+  <path class="glass" d="M482 298C482 213 533 163 600 163s118 50 118 135v54H482z"/>
+  <path class="thin" d="M482 352h236M482 298C482 213 533 163 600 163s118 50 118 135v54"/>
+  <path class="tick" d="M510 286h42M532 238l30 32M600 204v44M668 238l-30 32M690 286h-42"/>
+  <path class="red" d="M594 281 668 223 675 216 671 225 606 293z"/>
+  <circle class="ink" cx="600" cy="286" r="9"/>
+  <text class="dial-label" x="506" y="264" text-anchor="middle">$</text>
+  <text class="dial-label" x="600" y="190" text-anchor="middle">$$</text>
+  <text class="dial-label dial-max" x="690" y="266" text-anchor="middle">$$$$</text>
+
+  <!-- Blank logo/notice plate. -->
+  <rect class="face" x="455" y="394" width="290" height="162" rx="28"/>
+  <path class="line" d="M483 394h234c15 0 28 13 28 28v106c0 15-13 28-28 28H483c-15 0-28-13-28-28V422c0-15 13-28 28-28z"/>
+
+  <!-- Lower return cup. -->
+  <circle class="metal-dark" cx="600" cy="684" r="50"/>
+  <circle class="ink" cx="600" cy="684" r="38"/>
+  <rect class="face" x="587" y="652" width="26" height="64" rx="13"/>
+
+  <!-- Small side screw details. -->
+  <circle class="ink" cx="426" cy="364" r="7"/>
+  <circle class="ink" cx="774" cy="364" r="7"/>
+</svg>

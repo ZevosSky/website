@@ -93,6 +93,14 @@ const bodyStyle = [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={previewImageUrl} />
     <meta name="twitter:image:alt" content={imageAlt} />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S06HWEET9T"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("config", "G-S06HWEET9T");
+    </script>
     <ViewTransitions />
   </head>
   <body
@@ -144,36 +152,45 @@ const bodyStyle = [
       </button>
       <img class="lightbox-image" alt="" />
     </dialog>
-    <script is:inline>
-      const dialog = document.querySelector(".lightbox-dialog");
-      const image = dialog?.querySelector(".lightbox-image");
-      const closeButton = dialog?.querySelector(".lightbox-close");
+    <script is:inline data-astro-rerun>
+      (() => {
+        if (window.__lightboxInitialized) return;
+        window.__lightboxInitialized = true;
 
-      document.addEventListener("click", (event) => {
-        const trigger = event.target.closest(".lightbox-trigger");
-        if (!trigger || !dialog || !image) return;
+        document.addEventListener("click", (event) => {
+          const target = event.target;
+          if (!(target instanceof Element)) return;
 
-        image.src = trigger.dataset.lightboxSrc || "";
-        image.alt = trigger.dataset.lightboxAlt || "";
-        dialog.showModal();
-      });
+          const dialog = document.querySelector(".lightbox-dialog");
+          const image = dialog?.querySelector(".lightbox-image");
 
-      closeButton?.addEventListener("click", () => {
-        dialog?.close();
-      });
+          if (target.closest(".lightbox-close")) {
+            dialog?.close();
+            return;
+          }
 
-      dialog?.addEventListener("click", (event) => {
-        const rect = dialog.getBoundingClientRect();
-        const clickedInside =
-          rect.top <= event.clientY &&
-          event.clientY <= rect.top + rect.height &&
-          rect.left <= event.clientX &&
-          event.clientX <= rect.left + rect.width;
+          const trigger = target.closest(".lightbox-trigger");
+          if (trigger && dialog && image) {
+            image.src = trigger.dataset.lightboxSrc || "";
+            image.alt = trigger.dataset.lightboxAlt || "";
+            dialog.showModal();
+            return;
+          }
 
-        if (!clickedInside) {
-          dialog.close();
-        }
-      });
+          if (target.matches(".lightbox-dialog") && dialog?.open) {
+            const rect = dialog.getBoundingClientRect();
+            const clickedInside =
+              rect.top <= event.clientY &&
+              event.clientY <= rect.top + rect.height &&
+              rect.left <= event.clientX &&
+              event.clientX <= rect.left + rect.width;
+
+            if (!clickedInside) {
+              dialog.close();
+            }
+          }
+        });
+      })();
     </script>
   </body>
 </html>
