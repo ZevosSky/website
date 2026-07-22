@@ -93,6 +93,25 @@ const bodyStyle = [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={previewImageUrl} />
     <meta name="twitter:image:alt" content={imageAlt} />
+    <script is:inline>
+      (() => {
+        const storageKey = "garyyang-theme";
+        let storedTheme = null;
+
+        try {
+          storedTheme = localStorage.getItem(storageKey);
+        } catch {}
+
+        const theme =
+          storedTheme === "light" || storedTheme === "dark"
+            ? storedTheme
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-S06HWEET9T"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
@@ -201,6 +220,118 @@ const bodyStyle = [
       </button>
       <img class="lightbox-image" alt="" />
     </dialog>
+    <script is:inline>
+      (() => {
+        if (window.__themeToggleInitialized) return;
+        window.__themeToggleInitialized = true;
+
+        const root = document.documentElement;
+        const storageKey = "garyyang-theme";
+        const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
+        let activeTheme = root.dataset.theme === "dark" ? "dark" : "light";
+        let transitionTimer;
+
+        const getStoredTheme = () => {
+          try {
+            const value = localStorage.getItem(storageKey);
+            return value === "light" || value === "dark" ? value : null;
+          } catch {
+            return null;
+          }
+        };
+
+        const getPreferredTheme = () => {
+          return getStoredTheme() || activeTheme || (colorScheme.matches ? "dark" : "light");
+        };
+
+        const updateButtons = () => {
+          const lightsAreOn = root.dataset.theme !== "dark";
+
+          document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+            button.setAttribute("aria-pressed", String(lightsAreOn));
+            button.setAttribute("aria-label", lightsAreOn ? "Turn lights off" : "Turn lights on");
+            button.setAttribute("title", lightsAreOn ? "Turn lights off" : "Turn lights on");
+          });
+        };
+
+        const updateGiscusTheme = (theme) => {
+          const comments = document.querySelector("[data-giscus-comments]");
+          const giscusTheme =
+            theme === "dark" ? "dark_dimmed" : comments?.dataset.theme || "light";
+
+          document.querySelectorAll("[data-giscus-loader]").forEach((script) => {
+            script.dataset.theme = giscusTheme;
+          });
+
+          const sendTheme = () => {
+            document.querySelectorAll("iframe.giscus-frame").forEach((frame) => {
+              frame.contentWindow?.postMessage(
+                { giscus: { setConfig: { theme: giscusTheme } } },
+                "https://giscus.app"
+              );
+            });
+          };
+
+          sendTheme();
+          window.setTimeout(sendTheme, 250);
+        };
+
+        const applyTheme = (theme, { animate = true, persist = true } = {}) => {
+          const commitTheme = () => {
+            activeTheme = theme;
+            root.dataset.theme = theme;
+            updateButtons();
+            updateGiscusTheme(theme);
+          };
+
+          if (animate) {
+            root.classList.add("theme-transition");
+            window.requestAnimationFrame(commitTheme);
+            window.clearTimeout(transitionTimer);
+            transitionTimer = window.setTimeout(() => {
+              root.classList.remove("theme-transition");
+            }, 520);
+          } else {
+            commitTheme();
+          }
+
+          if (persist) {
+            try {
+              localStorage.setItem(storageKey, theme);
+            } catch {}
+          }
+        };
+
+        document.addEventListener("click", (event) => {
+          const target = event.target;
+          if (!(target instanceof Element) || !target.closest("[data-theme-toggle]")) return;
+
+          applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+        });
+
+        document.addEventListener("astro:before-swap", (event) => {
+          event.newDocument.documentElement.dataset.theme = getPreferredTheme();
+        });
+
+        document.addEventListener("astro:page-load", () => {
+          applyTheme(getPreferredTheme(), { animate: false, persist: false });
+        });
+
+        colorScheme.addEventListener("change", (event) => {
+          if (!getStoredTheme()) {
+            applyTheme(event.matches ? "dark" : "light", { persist: false });
+          }
+        });
+
+        window.addEventListener("storage", (event) => {
+          if (event.key === storageKey && (event.newValue === "light" || event.newValue === "dark")) {
+            applyTheme(event.newValue, { persist: false });
+          }
+        });
+
+        updateButtons();
+      })();
+    </script>
     <script is:inline data-astro-rerun>
       (() => {
         if (window.__lightboxInitialized) return;

@@ -13,29 +13,42 @@ const navItems = [
 <header class="site-header">
   <div class="shell site-header__inner">
     <a class="site-header__brand" href="/">{siteConfig.title}</a>
-    <nav aria-label="Primary navigation">
-      <ul class="site-header__nav">
-        {
-          navItems.map((item) => {
-            const isActive =
-              item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href);
+    <div class="site-header__controls">
+      <nav aria-label="Primary navigation">
+        <ul class="site-header__nav">
+          {
+            navItems.map((item) => {
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
 
-            return (
-              <li>
-                <a
-                  href={item.href}
-                  class:list={{ active: isActive }}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {item.label}
-                </a>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </nav>
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    class:list={{ active: isActive }}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+      <button
+        type="button"
+        class="theme-toggle"
+        data-theme-toggle
+        aria-label="Turn lights off"
+        aria-pressed="true"
+        title="Turn lights off"
+      >
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+        <span>Lights</span>
+      </button>
+    </div>
   </div>
 </header>

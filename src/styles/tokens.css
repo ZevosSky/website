@@ -1,3 +1,63 @@
+@property --color-ink {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #112019;
+}
+
+@property --color-paper {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #f4efe8;
+}
+
+@property --color-paper-strong {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fffaf4;
+}
+
+@property --color-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ca6d38;
+}
+
+@property --color-accent-soft {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #efd7c5;
+}
+
+@property --color-secondary {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #284b42;
+}
+
+@property --color-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #6d736d;
+}
+
+@property --color-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(17, 32, 25, 0.12);
+}
+
+@property --color-blog {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2f375c;
+}
+
+@property --color-shadow {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(17, 32, 25, 0.08);
+}
+
 :root {
   --color-ink: #112019;
   --color-paper: #f4efe8;
@@ -8,7 +68,10 @@
   --color-muted: #6d736d;
   --color-border: rgba(17, 32, 25, 0.12);
   --color-blog: #2f375c;
-  --shadow-card: 0 18px 50px rgba(17, 32, 25, 0.08);
+  --color-shadow: rgba(17, 32, 25, 0.08);
+  --color-on-dark: #f6f0e7;
+  --color-accent-ink: #21150f;
+  --shadow-card: 0 18px 50px var(--color-shadow);
   --radius-card: 24px;
   --radius-pill: 999px;
   --shell-width: 1160px;
@@ -21,4 +84,17 @@
   --space-7: 4.5rem;
   --font-display: "Georgia", "Times New Roman", serif;
   --font-body: "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --color-ink: #eee7dc;
+  --color-paper: #141916;
+  --color-paper-strong: #202720;
+  --color-accent: #e18a54;
+  --color-accent-soft: #563a2d;
+  --color-secondary: #9bc7b6;
+  --color-muted: #aab3aa;
+  --color-border: rgba(238, 231, 220, 0.15);
+  --color-blog: #b8c0e8;
+  --color-shadow: rgba(0, 0, 0, 0.32);
 }

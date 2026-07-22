@@ -57,7 +57,10 @@ const isConfigured = Boolean(giscus.categoryId);
         script.dataset.reactionsEnabled = comments.dataset.reactionsEnabled || "1";
         script.dataset.emitMetadata = comments.dataset.emitMetadata || "0";
         script.dataset.inputPosition = "bottom";
-        script.dataset.theme = comments.dataset.theme || "light";
+        script.dataset.theme =
+          document.documentElement.dataset.theme === "dark"
+            ? "dark_dimmed"
+            : comments.dataset.theme || "light";
         script.dataset.lang = "en";
         script.dataset.loading = comments.dataset.loading || "lazy";
         script.crossOrigin = "anonymous";
