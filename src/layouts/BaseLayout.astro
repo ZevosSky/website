@@ -109,7 +109,7 @@ const bodyStyle = [
     data-hero-mobile={responsive.hero.mobile}
     data-compact-supporting-text={String(responsive.compactSupportingTextOnMobile)}
   >
-    <div class="ambient-leaves" aria-hidden="true" transition:persist>
+    <div class="ambient-leaves" aria-hidden="true" transition:persist="ambient-particles">
       <span class="leaf leaf--1"></span>
       <span class="leaf leaf--2"></span>
       <span class="leaf leaf--3"></span>
@@ -141,6 +141,55 @@ const bodyStyle = [
       <span class="leaf leaf--29"></span>
       <span class="leaf leaf--30"></span>
     </div>
+    <script is:inline>
+      (() => {
+        const container = document.querySelector(".ambient-leaves");
+
+        if (!container || container.dataset.animated === "true") return;
+
+        container.dataset.animated = "true";
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const keyframes = [
+          { transform: "translate3d(0, 0, 0) rotate(8deg)", offset: 0 },
+          { transform: "translate3d(-220px, -140px, 0) rotate(68deg)", offset: 0.25 },
+          { transform: "translate3d(-520px, -320px, 0) rotate(128deg)", offset: 0.5 },
+          { transform: "translate3d(-860px, -520px, 0) rotate(188deg)", offset: 0.75 },
+          { transform: "translate3d(-1250px, -760px, 0) rotate(255deg)", offset: 1 }
+        ];
+        let animations = [];
+
+        const toMilliseconds = (value) => {
+          const amount = Number.parseFloat(value);
+          return value.trim().endsWith("ms") ? amount : amount * 1000;
+        };
+
+        const syncAnimations = () => {
+          animations.forEach((animation) => animation.cancel());
+          animations = [];
+
+          if (reducedMotion.matches) return;
+
+          container.querySelectorAll(".leaf").forEach((leaf) => {
+            const styles = window.getComputedStyle(leaf);
+            const duration = toMilliseconds(styles.animationDuration);
+            const delay = toMilliseconds(styles.animationDelay);
+
+            animations.push(
+              leaf.animate(keyframes, {
+                delay,
+                duration,
+                easing: "linear",
+                iterations: Infinity
+              })
+            );
+          });
+        };
+
+        syncAnimations();
+        reducedMotion.addEventListener("change", syncAnimations);
+      })();
+    </script>
     <Header transition:animate="fade" />
     <main transition:animate="fade">
       <slot />

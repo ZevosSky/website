@@ -42,7 +42,7 @@ body {
   box-shadow: 0 0 0 1px rgba(255, 226, 235, 0.12) inset;
   filter: blur(0.15px);
   opacity: 0.9;
-  animation: petal-drift linear infinite;
+  will-change: transform;
 }
 
 .leaf::after {
@@ -330,24 +330,6 @@ body {
   height: 8px;
   animation-duration: 18s;
   animation-delay: -6s;
-}
-
-@keyframes petal-drift {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(8deg);
-  }
-  25% {
-    transform: translate3d(-220px, -140px, 0) rotate(68deg);
-  }
-  50% {
-    transform: translate3d(-520px, -320px, 0) rotate(128deg);
-  }
-  75% {
-    transform: translate3d(-860px, -520px, 0) rotate(188deg);
-  }
-  100% {
-    transform: translate3d(-1250px, -760px, 0) rotate(255deg);
-  }
 }
 
 body > header,

@@ -8,7 +8,7 @@ import { siteConfig } from "../config/site";
 import { getBlogPosts, getHomeProjects } from "../lib/content";
 
 const projects = await getHomeProjects();
-const posts = (await getBlogPosts()).slice(0, 2);
+const posts = (await getBlogPosts()).slice(0, 3);
 ---
 
 <BaseLayout>
