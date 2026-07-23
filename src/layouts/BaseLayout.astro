@@ -220,16 +220,23 @@ const bodyStyle = [
       </button>
       <img class="lightbox-image" alt="" />
     </dialog>
-    <script is:inline>
+    <script is:inline data-astro-rerun>
       (() => {
-        if (window.__themeToggleInitialized) return;
-        window.__themeToggleInitialized = true;
+        if (window.__themeToggleInitialized && !window.__themeToggleRuntime) {
+          window.location.reload();
+          return;
+        }
+
+        window.__themeToggleRuntime?.destroy?.();
+        delete window.__themeToggleInitialized;
 
         const root = document.documentElement;
         const storageKey = "garyyang-theme";
         const colorScheme = window.matchMedia("(prefers-color-scheme: dark)");
         let activeTheme = root.dataset.theme === "dark" ? "dark" : "light";
+        let transitionFrame;
         let transitionTimer;
+        let giscusThemeTimer;
 
         const getStoredTheme = () => {
           try {
@@ -273,7 +280,8 @@ const bodyStyle = [
           };
 
           sendTheme();
-          window.setTimeout(sendTheme, 250);
+          window.clearTimeout(giscusThemeTimer);
+          giscusThemeTimer = window.setTimeout(sendTheme, 250);
         };
 
         const applyTheme = (theme, { animate = true, persist = true } = {}) => {
@@ -286,7 +294,8 @@ const bodyStyle = [
 
           if (animate) {
             root.classList.add("theme-transition");
-            window.requestAnimationFrame(commitTheme);
+            window.cancelAnimationFrame(transitionFrame);
+            transitionFrame = window.requestAnimationFrame(commitTheme);
             window.clearTimeout(transitionTimer);
             transitionTimer = window.setTimeout(() => {
               root.classList.remove("theme-transition");
@@ -302,32 +311,52 @@ const bodyStyle = [
           }
         };
 
-        document.addEventListener("click", (event) => {
+        const handleClick = (event) => {
           const target = event.target;
           if (!(target instanceof Element) || !target.closest("[data-theme-toggle]")) return;
 
           applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
-        });
+        };
 
-        document.addEventListener("astro:before-swap", (event) => {
+        const handleBeforeSwap = (event) => {
           event.newDocument.documentElement.dataset.theme = getPreferredTheme();
-        });
+        };
 
-        document.addEventListener("astro:page-load", () => {
+        const handlePageLoad = () => {
           applyTheme(getPreferredTheme(), { animate: false, persist: false });
-        });
+        };
 
-        colorScheme.addEventListener("change", (event) => {
+        const handleColorSchemeChange = (event) => {
           if (!getStoredTheme()) {
             applyTheme(event.matches ? "dark" : "light", { persist: false });
           }
-        });
+        };
 
-        window.addEventListener("storage", (event) => {
+        const handleStorage = (event) => {
           if (event.key === storageKey && (event.newValue === "light" || event.newValue === "dark")) {
             applyTheme(event.newValue, { persist: false });
           }
-        });
+        };
+
+        document.addEventListener("click", handleClick);
+        document.addEventListener("astro:before-swap", handleBeforeSwap);
+        document.addEventListener("astro:page-load", handlePageLoad);
+        colorScheme.addEventListener("change", handleColorSchemeChange);
+        window.addEventListener("storage", handleStorage);
+
+        window.__themeToggleRuntime = {
+          destroy() {
+            document.removeEventListener("click", handleClick);
+            document.removeEventListener("astro:before-swap", handleBeforeSwap);
+            document.removeEventListener("astro:page-load", handlePageLoad);
+            colorScheme.removeEventListener("change", handleColorSchemeChange);
+            window.removeEventListener("storage", handleStorage);
+            window.cancelAnimationFrame(transitionFrame);
+            window.clearTimeout(transitionTimer);
+            window.clearTimeout(giscusThemeTimer);
+            root.classList.remove("theme-transition");
+          }
+        };
 
         updateButtons();
       })();
