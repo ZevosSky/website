@@ -1,6 +1,7 @@
 import { responsivePreset } from "./appearance";
 
 const featuredProjectSlugs: string[] = [
+  "gpu-llm-inference-sharding",
   "machine-learning-mesh-re-topology",
   "substance-designer-tree-bark",
   "command-pattern-based-animations-systems"
@@ -30,10 +31,10 @@ export const siteConfig = {
     }
   ],
   currentFocus: {
-    title: "Currently exploring machine learning for mesh workflows",
+    title: "Currently exploring local LLM inference sharding",
     summary:
-      "Learning how to leverage machhine learning techniques by applying it to a personal project that is meaningful to me: mesh re-topology.",
-    href: "/projects/machine-learning-mesh-re-topology"
+      "Building a cost-conscious homelab testbed for larger local models by benchmarking Tesla P40 sharding, llama.cpp split modes, PCIe layout, power limits, and networked inference.",
+    href: "/projects/gpu-llm-inference-sharding"
   },
   portfolio: {
     featuredProjectSlugs,

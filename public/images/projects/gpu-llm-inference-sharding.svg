@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">GPU stack connected to LLM</title>
+  <desc id="desc">Four stacked GPU cards connected by lines to a bubble labeled LLM.</desc>
+  <defs>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dff4ee"/>
+      <stop offset="1" stop-color="#6fc7b3"/>
+    </linearGradient>
+    <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4efe1"/>
+      <stop offset="1" stop-color="#b9b19f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <g id="gpu">
+      <rect x="0" y="0" width="330" height="104" rx="10" fill="url(#card)" stroke="#f4efe1" stroke-width="4"/>
+      <rect x="24" y="18" width="184" height="68" rx="8" fill="#14202a"/>
+      <circle cx="76" cy="52" r="25" fill="#21323a"/>
+      <circle cx="76" cy="52" r="17" fill="none" stroke="#6fc7b3" stroke-width="6"/>
+      <circle cx="76" cy="52" r="5" fill="#f28f3b"/>
+      <path d="M76 28c7 10 7 18 0 24M100 52c-10 7-18 7-24 0M76 76c-7-10-7-18 0-24M52 52c10-7 18-7 24 0" fill="none" stroke="#dff4ee" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="150" cy="52" r="25" fill="#21323a"/>
+      <circle cx="150" cy="52" r="17" fill="none" stroke="#6fc7b3" stroke-width="6"/>
+      <circle cx="150" cy="52" r="5" fill="#f28f3b"/>
+      <path d="M150 28c7 10 7 18 0 24M174 52c-10 7-18 7-24 0M150 76c-7-10-7-18 0-24M126 52c10-7 18-7 24 0" fill="none" stroke="#dff4ee" stroke-width="3" stroke-linecap="round"/>
+      <rect x="228" y="20" width="54" height="64" rx="5" fill="#20313a"/>
+      <path d="M241 34h28M241 48h28M241 62h28M241 76h28" stroke="#6fc7b3" stroke-width="4" stroke-linecap="round"/>
+      <path d="M330 32h42v40h-42z" fill="url(#plate)"/>
+      <path d="M372 41h14M372 52h14M372 63h14" stroke="#14202a" stroke-width="4" stroke-linecap="round"/>
+      <path d="M52 104h172v17H52z" fill="#d6a442"/>
+      <path d="M66 104v17M90 104v17M114 104v17M138 104v17M162 104v17M186 104v17M210 104v17" stroke="#80611e" stroke-width="4"/>
+      <path d="M225 31h-22M225 73h-22M219 31v42" stroke="#14202a" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <rect width="1200" height="675" fill="#121b24"/>
+
+  <g fill="none" stroke="#f28f3b" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M504 152C620 152 682 246 782 338"/>
+    <path d="M504 276C620 276 682 304 782 338"/>
+    <path d="M504 400C620 400 682 372 782 338"/>
+    <path d="M504 524C620 524 682 430 782 338"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <use href="#gpu" x="118" y="92"/>
+    <use href="#gpu" x="118" y="216"/>
+    <use href="#gpu" x="118" y="340"/>
+    <use href="#gpu" x="118" y="464"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <circle cx="890" cy="338" r="132" fill="#dff4ee" stroke="#f28f3b" stroke-width="8"/>
+    <circle cx="890" cy="338" r="98" fill="#6fc7b3" opacity="0.34"/>
+    <text x="890" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="700" fill="#121b24">LLM</text>
+  </g>
+
+  <g fill="#f28f3b">
+    <circle cx="504" cy="152" r="10"/>
+    <circle cx="504" cy="276" r="10"/>
+    <circle cx="504" cy="400" r="10"/>
+    <circle cx="504" cy="524" r="10"/>
+    <circle cx="782" cy="338" r="10"/>
+  </g>
+</svg>

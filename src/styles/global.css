@@ -1103,6 +1103,34 @@ html[data-theme="dark"] .entry__comments .giscus-frame {
   max-width: 100%;
 }
 
+.prose table {
+  width: 100%;
+  margin: 1.4rem 0 1.8rem;
+  border-collapse: collapse;
+  border: 1px solid color-mix(in srgb, var(--color-border) 78%, var(--color-ink) 22%);
+  background: color-mix(in srgb, var(--color-paper-strong) 72%, transparent);
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.prose th,
+.prose td {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--color-border) 84%, var(--color-ink) 16%);
+  vertical-align: top;
+  text-align: left;
+}
+
+.prose th {
+  background: color-mix(in srgb, var(--color-secondary) 12%, transparent);
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.prose tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--color-secondary) 6%, transparent);
+}
+
 .prose pre,
 .prose pre code,
 .prose code {
